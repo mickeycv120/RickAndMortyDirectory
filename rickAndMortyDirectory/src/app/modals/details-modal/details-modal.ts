@@ -1,18 +1,31 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 import { Character } from '../../Types/characterType';
+import { RickMortyService } from '../../api/api';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-details-modal',
-  imports: [MatDialogModule],
+  imports: [MatDialogModule, CommonModule],
   templateUrl: './details-modal.html',
   styleUrl: './details-modal.css',
 })
-export class DetailsModal {
+export class DetailsModal implements OnInit {
+  episodes$: Observable<any[]> = of([]);
+
   constructor(
     public dialogRef: MatDialogRef<DetailsModal>,
-    @Inject(MAT_DIALOG_DATA) public data: { character: Character }
+    @Inject(MAT_DIALOG_DATA) public data: { character: Character },
+    private rickMortyService: RickMortyService
   ) {}
+
+  ngOnInit(): void {
+    // Cargar información detallada de los episodios
+    if (this.data.character.episode && this.data.character.episode.length > 0) {
+      this.episodes$ = this.rickMortyService.getEpisodesByUrls(this.data.character.episode);
+    }
+  }
 
   onClose(): void {
     this.dialogRef.close();

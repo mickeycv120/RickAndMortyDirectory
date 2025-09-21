@@ -56,11 +56,23 @@
           <div class="text-2xl font-bold text-primary">{{ data.character.episode.length }}</div>
           <div class="text-sm text-muted-foreground">Episodios totales</div>
         </div>
-        <div class="episodes-list col-span-4 max-h-48 overflow-y-auto grid grid-cols-4 gap-2">
-          @for (episodeUrl of data.character.episode; track episodeUrl) {
-          <span class="episode-number px-2 py-1 bg-secondary/20 rounded text-xs text-center">
-            {{ getEpisodeNumber(episodeUrl) }}
-          </span>
+        <div class="episodes-list col-span-4 max-h-48 overflow-y-auto space-y-2">
+          @if (episodes$ | async; as episodes) { @for (episode of episodes; track episode.id) {
+          <div class="episode-item p-3 bg-secondary/10 rounded-lg border border-secondary/20">
+            <div class="flex justify-between items-start mb-1">
+              <span class="episode-number px-2 py-1 bg-primary/20 rounded text-xs font-medium">
+                {{ episode.episode }}
+              </span>
+              <span class="text-xs text-muted-foreground">{{ episode.air_date }}</span>
+            </div>
+            <h4 class="text-sm font-medium text-foreground mb-1">{{ episode.name }}</h4>
+            <p class="text-xs text-muted-foreground">{{ episode.characters.length }} personajes</p>
+          </div>
+          } } @else {
+          <div class="flex justify-center items-center py-4">
+            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+            <span class="ml-2 text-sm text-muted-foreground">Cargando episodios...</span>
+          </div>
           }
         </div>
       </div>

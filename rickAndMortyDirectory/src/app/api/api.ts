@@ -53,6 +53,29 @@ export class RickMortyService {
   }
 
   /**
+   * Obtiene episodios por URLs
+   */
+  getEpisodesByUrls(episodeUrls: string[]): Observable<any[]> {
+    // Extraer IDs de las URLs
+    const episodeIds = episodeUrls
+      .map((url) => {
+        const match = url.match(/\/(\d+)$/);
+        return match ? parseInt(match[1]) : null;
+      })
+      .filter((id) => id !== null);
+
+    if (episodeIds.length === 0) {
+      return of([]);
+    }
+
+    // Si es un solo episodio, la API devuelve un objeto, no un array
+    const url = `${this.baseUrl}/episode/${episodeIds.join(',')}`;
+    return this.http
+      .get<any>(url)
+      .pipe(map((response) => (Array.isArray(response) ? response : [response])));
+  }
+
+  /**
    * Obtiene episodios por IDs
    */
   getEpisodes(ids: number[]): Observable<any> {
