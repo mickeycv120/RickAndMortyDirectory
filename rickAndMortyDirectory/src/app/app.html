@@ -1,3 +1,7 @@
-<app-header />
+<app-header
+  [filters]="currentFilters"
+  [totalCount]="totalCount"
+  (filtersChange)="onFiltersChange($event)"
+/>
 <router-outlet />
-<app-card />
+<app-card [filters$]="currentFilters$" (dataChange)="onDataChange($event)" />

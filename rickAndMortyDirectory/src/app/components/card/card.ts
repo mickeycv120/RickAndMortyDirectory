@@ -1,9 +1,16 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Character, CharacterFilters, CharactersResponse } from '../../Types/characterType';
 import { RickMortyService } from '../../api/api';
-import { BehaviorSubject, Observable, switchMap, map, startWith, catchError, of } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap, map, startWith, catchError, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +19,10 @@ import { BehaviorSubject, Observable, switchMap, map, startWith, catchError, of 
   styleUrl: './card.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Card {
+export class Card implements OnInit {
+  @Input() filters$!: Observable<CharacterFilters>;
+  @Output() dataChange = new EventEmitter<{ totalCount: number }>();
+
   private pageSubject = new BehaviorSubject<number>(1);
   private filtersSubject = new BehaviorSubject<CharacterFilters>({
     name: '',
@@ -32,6 +42,10 @@ export class Card {
                 totalCount: response.info.count,
                 isLoading: false,
               })),
+              tap((data) => {
+                // Emitir el totalCount al componente padre
+                this.dataChange.emit({ totalCount: data.totalCount });
+              }),
               startWith({ characters: [], totalCount: 0, isLoading: true }),
               catchError((error) => {
                 console.error('Error loading characters:', error);
@@ -47,13 +61,18 @@ export class Card {
 
   constructor(private rickMortyService: RickMortyService) {}
 
-  trackByCharacter(index: number, character: Character): number {
-    return character.id;
+  ngOnInit() {
+    // Suscribirse a los cambios de filtros desde el Input
+    if (this.filters$) {
+      this.filters$.subscribe((filters) => {
+        this.filtersSubject.next(filters);
+        this.pageSubject.next(1); // Reset to first page when filters change
+      });
+    }
   }
 
-  onFiltersChange(filters: CharacterFilters) {
-    this.filtersSubject.next(filters);
-    this.pageSubject.next(1); // resetear página
+  trackByCharacter(index: number, character: Character): number {
+    return character.id;
   }
 
   nextPage() {
