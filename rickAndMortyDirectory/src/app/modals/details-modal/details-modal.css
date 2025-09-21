@@ -1,0 +1,13 @@
+::ng-deep .custom-dialog-container .mat-mdc-dialog-container {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+::ng-deep .custom-dialog-container .mdc-dialog__surface {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}

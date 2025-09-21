@@ -1,4 +1,6 @@
-<div class="details-modal-content bg-background rounded-xl shadow-xl p-6 max-w-3xl mx-auto overflow-hidden">
+<div
+  class="details-modal-content bg-gray-900 rounded-xl shadow-xl p-6 max-w-3xl mx-auto overflow-hidden"
+>
   <!-- Header del modal -->
   <div class="modal-header flex flex-col items-center gap-3 mb-6">
     <img
@@ -48,18 +50,18 @@
     <div class="episodes-section">
       <h3 class="font-semibold text-lg mb-3">Episodios</h3>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div class="episodes-count flex flex-col items-center justify-center p-4 bg-primary/10 rounded-lg border border-primary/20">
+        <div
+          class="episodes-count flex flex-col items-center justify-center p-4 bg-primary/10 rounded-lg border border-primary/20"
+        >
           <div class="text-2xl font-bold text-primary">{{ data.character.episode.length }}</div>
           <div class="text-sm text-muted-foreground">Episodios totales</div>
         </div>
-        <div class="episodes-list col-span-4 max-h-48 overflow-y-auto">
-          <div class="grid grid-cols-4 gap-2">
-            @for (episodeUrl of data.character.episode; track episodeUrl) {
-              <span class="episode-number px-2 py-1 bg-secondary/20 rounded text-xs text-center">
-                {{ getEpisodeNumber(episodeUrl) }}
-              </span>
-            }
-          </div>
+        <div class="episodes-list col-span-4 max-h-48 overflow-y-auto grid grid-cols-4 gap-2">
+          @for (episodeUrl of data.character.episode; track episodeUrl) {
+          <span class="episode-number px-2 py-1 bg-secondary/20 rounded text-xs text-center">
+            {{ getEpisodeNumber(episodeUrl) }}
+          </span>
+          }
         </div>
       </div>
     </div>

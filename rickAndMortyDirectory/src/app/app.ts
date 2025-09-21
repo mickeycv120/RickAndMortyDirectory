@@ -47,15 +47,16 @@ export class App {
   // Método para manejar el clic en una card de personaje
   onCharacterClick(character: Character) {
     console.log('Character clicked:', character);
-    
+
     // Abrir el modal de detalles
     const dialogRef = this.dialog.open(DetailsModal, {
       width: '600px',
       maxWidth: '90vw',
-      data: { character }
+      panelClass: 'custom-dialog-container',
+      data: { character },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal cerrado');
     });
   }
