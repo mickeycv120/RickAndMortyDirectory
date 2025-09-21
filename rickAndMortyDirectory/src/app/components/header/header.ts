@@ -24,4 +24,15 @@ export class Header {
   onFiltersChange(newFilters: any) {
     this.filtersChange.emit(newFilters);
   }
+
+  toggleFavorites() {
+    const newFilters = {
+      ...this.filters,
+      showFavorites: !this.filters.showFavorites,
+      // Limpiar otros filtros cuando se activan favoritos
+      ...(this.filters.showFavorites ? {} : { name: '', status: '', species: '' }),
+    };
+    this.filters = newFilters;
+    this.filtersChange.emit(newFilters);
+  }
 }

@@ -1,4 +1,4 @@
-<header class="space-header sticky top-0 z-10">
+<header class="space-header sticky top-0 z-50">
   <div class="container mx-auto px-6 py-8">
     <div class="flex items-center justify-between mb-6">
       <!-- Logo + Título -->
@@ -18,16 +18,18 @@
 
       <!-- Favoritos -->
       <div class="flex items-center gap-4">
-        <!-- <app-favorites-counter></app-favorites-counter> -->
-        <a routerLink="/favorites">
-          <button
-            class="gap-2 space-card border border-primary/20 hover:border-primary/40 bg-transparent rounded px-4 py-2 flex items-center"
-          >
-            <!-- <app-heart-icon class="h-4 w-4"></app-heart-icon> -->
-            <lucide-icon [img]="Heart" class="h-4 w-4"></lucide-icon>
-            Favoritos
-          </button>
-        </a>
+        <button
+          (click)="toggleFavorites()"
+          class="gap-2 space-card border rounded-lg px-4 py-2 flex items-center transition-all"
+          [class]="
+            filters.showFavorites
+              ? 'border-red-500 bg-red-500 text-white hover:bg-red-600'
+              : 'border-primary/20 hover:border-primary/40 bg-transparent'
+          "
+        >
+          <lucide-icon [img]="Heart" class="h-4 w-4"></lucide-icon>
+          {{ filters.showFavorites ? 'Todos' : 'Favoritos' }}
+        </button>
       </div>
     </div>
 

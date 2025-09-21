@@ -225,5 +225,56 @@
   box-shadow: 0 0 8px oklch(0.55 0.12 15 / 0.3);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* Estilos personalizados para scrollbar discreta y bonita */
+/* Para navegadores Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo transparente */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0.04 240); /* Color del thumb más sutil */
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0.06 240); /* Más visible al hacer hover */
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.3 0.04 240) transparent;
+}
+
+/* Scrollbar para elementos específicos con scroll interno */
+.modal-body::-webkit-scrollbar,
+.episodes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb,
+.episodes-list::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0.06 180); /* Color primary más sutil para modales */
+  border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover,
+.episodes-list::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0.08 180);
+}

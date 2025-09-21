@@ -21,6 +21,7 @@ export class App {
     name: '',
     status: '',
     species: '',
+    showFavorites: false,
   });
 
   currentFilters$ = this.filtersSubject.asObservable();
@@ -28,6 +29,7 @@ export class App {
     name: '',
     status: '',
     species: '',
+    showFavorites: false,
   };
   totalCount = 0;
 

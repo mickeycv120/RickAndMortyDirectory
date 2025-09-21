@@ -80,6 +80,21 @@ export class Card implements OnInit {
     this.characterClick.emit(character);
   }
 
+  onFavoriteClick(character: Character, event: Event) {
+    // Prevenir que se abra el modal al hacer click en favorito
+    event.stopPropagation();
+
+    // Toggle del estado de favorito
+    character.isFavorite = !character.isFavorite;
+    this.rickMortyService.toggleFavorite(character);
+
+    // Recargar datos para reflejar los cambios si estamos mostrando favoritos
+    const currentFilters = this.filtersSubject.getValue();
+    if (currentFilters.showFavorites) {
+      this.filtersSubject.next({ ...currentFilters });
+    }
+  }
+
   nextPage() {
     this.pageSubject.next(this.pageSubject.value + 1);
   }
