@@ -193,11 +193,11 @@ interface ApiResponse<T> {
 
 ## Decisiones Técnicas
 
-• **Standalone Components**: Eliminan la necesidad de NgModules, mejoran tree-shaking y facilitan lazy loading
-• **Tailwind + Angular Material**: Tailwind para utility-first styling, Material para componentes complejos como modales
-• **OnPush Change Detection**: Optimiza renderizado en componentes de lista con muchos elementos
-• **Firebase Hosting**: Despliegue rápido, CDN global y configuración simple para SPAs
-• **Signals over BehaviorSubject**: API más simple y mejor integración con el nuevo Angular
+- **Standalone Components**: Eliminan la necesidad de NgModules, mejoran tree-shaking y facilitan lazy loading
+- **Tailwind + Angular Material**: Tailwind para utility-first styling, Material para componentes complejos como modales
+- **OnPush Change Detection**: Optimiza renderizado en componentes de lista con muchos elementos
+- **Firebase Hosting**: Despliegue rápido, CDN global y configuración simple para SPAs
+- **Signals over BehaviorSubject**: API más simple y mejor integración con el nuevo Angular
 
 ## Escalabilidad y Mantenimiento
 
@@ -281,45 +281,44 @@ interface ApiResponse<T> {
 - **Reduced Motion**: Respeto por `prefers-reduced-motion`
 - **Keyboard Navigation**: Navegable completamente con teclado
 - **Modularización de Componentes**: Los componentes actuales pueden dividirse en sub-componentes más específicos para mejor mantenibilidad (ej: separar filtros del header, crear componente específico para status badges)
--
 
 ## Uso de IA
 
 ### Dónde y Por Qué me Apoyé en IA
 
-• **Configuración inicial de Tailwind y Angular Material**: Aceleró setup de themes y configuraciones complejas
-• **Debugging de problemas de build y deploy**: Identificó rápidamente conflictos entre CSS layers y configuraciones de producción
-• **Optimización de tipos TypeScript**: Sugirió interfaces más robustas y manejo de error cases
-• **Implementación de animaciones CSS**: Creó keyframes complejos para el tema espacial
-• **Troubleshooting de Firebase deployment**: Diagnosticó problemas de configuración de paths y estructura de directorios
+- **Configuración inicial de Tailwind y Angular Material**: Aceleró setup de themes y configuraciones complejas
+- **Debugging de problemas de build y deploy**: Identificó rápidamente conflictos entre CSS layers y configuraciones de producción
+- **Optimización de tipos TypeScript**: Sugirió interfaces más robustas y manejo de error cases
+- **Implementación de animaciones CSS**: Creó keyframes complejos para el tema espacial
+- **Troubleshooting de Firebase deployment**: Diagnosticó problemas de configuración de paths y estructura de directorios
 
 ### Sugerencias Aceptadas vs. Reescritas
 
-• **Aceptadas**: Configuraciones de build, estructura de servicios Angular, manejo de Observables con RxJS
-• **Modificadas**: Algunos patterns de CSS fueron simplificados para mejor mantenimiento
-• **Rechazadas**: Propuestas de arquitectura over-engineered para el scope del proyecto
-• **Adaptadas**: Sugerencias de naming conventions ajustadas al estilo del equipo
+- **Aceptadas**: Configuraciones de build, estructura de servicios Angular, manejo de Observables con RxJS
+- **Modificadas**: Algunos patterns de CSS fueron simplificados para mejor mantenimiento
+- **Rechazadas**: Propuestas de arquitectura over-engineered para el scope del proyecto
+- **Adaptadas**: Sugerencias de naming conventions ajustadas al estilo del equipo
 
 ### Riesgos Detectados y Mitigaciones
 
-• **Performance**: IA sugirió muchas optimizaciones que podrían afectar readability - priorizé balance entre performance y mantenibilidad
-• **Over-dependency**: Mantuve un enfoque crítico hacia las sugerencias de IA. Gracias a mi experiencia previa con React y Next.js, pude hacer equivalencias técnicas precisas y formular requests específicos en lugar de depender de soluciones genéricas. Esto aseguró que cada implementación fuera contextualmente apropiada para el proyecto.
-• **Security**: Validé todas las sugerencias de configuración contra la documentación oficial de Angular y Firebase. La IA frecuentemente sugería métodos deprecados o patterns de versiones anteriores de Angular, cuando el proyecto requería aprovechar las características específicas de Angular 20 como Standalone Components y Signals.
-• **Technical debt**: La IA tiende a proponer soluciones rápidas que pueden generar deuda técnica. Refactoricé estas sugerencias priorizando la sostenibilidad a largo plazo y aplicando pensamiento crítico para garantizar que cada decisión técnica fuera la más adecuada para los objetivos del proyecto y su arquitectura general.
+- **Performance**: IA sugirió muchas optimizaciones que podrían afectar readability - priorizé balance entre performance y mantenibilidad
+- **Over-dependency**: Mantuve un enfoque crítico hacia las sugerencias de IA. Gracias a mi experiencia previa con React y Next.js, pude hacer equivalencias técnicas precisas y formular requests específicos en lugar de depender de soluciones genéricas. Esto aseguró que cada implementación fuera contextualmente apropiada para el proyecto.
+- **Security**: Validé todas las sugerencias de configuración contra la documentación oficial de Angular y Firebase. La IA frecuentemente sugería métodos deprecados o patterns de versiones anteriores de Angular, cuando el proyecto requería aprovechar las características específicas de Angular 20 como Standalone Components y Signals.
+- **Technical debt**: La IA tiende a proponer soluciones rápidas que pueden generar deuda técnica. Refactoricé estas sugerencias priorizando la sostenibilidad a largo plazo y aplicando pensamiento crítico para garantizar que cada decisión técnica fuera la más adecuada para los objetivos del proyecto y su arquitectura general.
 
 ### Resumen de Enfoque de Prompts
 
-• **Contextuales**: Proporcioné sempre contexto completo del stack, estructura existente y objetivos.
-• **Iterativos**: Usé prompts de seguimiento para refinar soluciones iniciales.
-• **Problem-solving**: Enfocados en problemas específicos más que en generar código desde cero.
-• **Best practices**: Pedí explicaciones de las decisiones técnicas para validar approaches.
+- **Contextuales**: Proporcioné sempre contexto completo del stack, estructura existente y objetivos.
+- **Iterativos**: Usé prompts de seguimiento para refinar soluciones iniciales.
+- **Problem-solving**: Enfocados en problemas específicos más que en generar código desde cero.
+- **Best practices**: Pedí explicaciones de las decisiones técnicas para validar approaches.
 
 ### Lecciones y Siguientes Mejoras
 
-• **Requiere validación constante**: Cada sugerencia debe ser evaluada contra best practices actuales
-• **Mejores resultados con contexto específico**: Prompts detallados sobre el stack y constraints dan mejores outputs
-• **IA es excelente para debugging**: Especialmente útil para problemas de configuración y build tools. Esta fue mi primera experiencia trabajando con Angular, pero resultó ser bastante enriquecedora - pude aprender muchísimo, salir de mi zona de confort y buscar soluciones creativas a problemas para vencer mis limitaciones técnicas
-• **Complemento, no reemplazo**: La IA acelera el desarrollo pero no reemplaza el entendimiento profundo de las tecnologías. Lo que nos distingue como desarrolladores de software no es nuestra dependencia a una tecnología específica, sino nuestra capacidad para adaptarnos y resolver problemas. Aunque no conocía Angular previamente, mi capacidad de resolución de problemas no está limitada a un lenguaje o tecnología en particular, sino que se fundamenta en mi criterio técnico, creatividad y capacidad de análisis.
+- **Requiere validación constante**: Cada sugerencia debe ser evaluada contra best practices actuales
+- **Mejores resultados con contexto específico**: Prompts detallados sobre el stack y constraints dan mejores outputs
+- **IA es excelente para debugging**: Especialmente útil para problemas de configuración y build tools. Esta fue mi primera experiencia trabajando con Angular, pero resultó ser bastante enriquecedora - pude aprender muchísimo, salir de mi zona de confort y buscar soluciones creativas a problemas para vencer mis limitaciones técnicas
+- **Complemento, no reemplazo**: La IA acelera el desarrollo pero no reemplaza el entendimiento profundo de las tecnologías. Lo que nos distingue como desarrolladores de software no es nuestra dependencia a una tecnología específica, sino nuestra capacidad para adaptarnos y resolver problemas. Aunque no conocía Angular previamente, mi capacidad de resolución de problemas no está limitada a un lenguaje o tecnología en particular, sino que se fundamenta en mi criterio técnico, creatividad y capacidad de análisis.
 
 ## Limitaciones y Siguientes Pasos
 
