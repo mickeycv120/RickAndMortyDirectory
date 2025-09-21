@@ -1,0 +1,83 @@
+<header class="space-header sticky top-0 z-10">
+  <div class="container mx-auto px-6 py-8">
+    <div class="flex items-center justify-between mb-6">
+      <!-- Logo + Título -->
+      <div class="flex items-center gap-4">
+        <div class="p-3 rounded-2xl bg-primary/10 stellar-pulse">
+          <!-- Reemplaza esto por un ícono real (SVG o librería) -->
+          <!-- <app-zap-icon class="h-10 w-10 text-primary"></app-zap-icon> -->
+          <lucide-icon [img]="Heart" class="h-10 w-10 text-primary"></lucide-icon>
+        </div>
+        <div>
+          <h1 class="text-4xl font-bold text-balance tracking-tight">Directorio Rick & Morty</h1>
+          <p class="text-muted-foreground text-pretty text-lg mt-1">
+            Explora el multiverso infinito
+          </p>
+        </div>
+      </div>
+
+      <!-- Favoritos -->
+      <div class="flex items-center gap-4">
+        <!-- <app-favorites-counter></app-favorites-counter> -->
+        <a routerLink="/favorites">
+          <button
+            class="gap-2 space-card border border-primary/20 hover:border-primary/40 bg-transparent rounded px-4 py-2 flex items-center"
+          >
+            <!-- <app-heart-icon class="h-4 w-4"></app-heart-icon> -->
+            <lucide-icon [img]="Heart" class="h-4 w-4"></lucide-icon>
+            Favoritos
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="space-card p-6 rounded-2xl">
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Filtros de Búsqueda</h2>
+        <p class="text-muted-foreground">{{ totalCount }} personajes encontrados</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Filtro por nombre -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Nombre</label>
+          <input
+            type="text"
+            [(ngModel)]="filters.name"
+            (ngModelChange)="onFiltersChange(filters)"
+            placeholder="Buscar por nombre..."
+            class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+          />
+        </div>
+
+        <!-- Filtro por estado -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Estado</label>
+          <select
+            [(ngModel)]="filters.status"
+            (ngModelChange)="onFiltersChange(filters)"
+            class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+          >
+            <option value="">Todos</option>
+            <option value="alive">Vivo</option>
+            <option value="dead">Muerto</option>
+            <option value="unknown">Desconocido</option>
+          </select>
+        </div>
+
+        <!-- Filtro por especie -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Especie</label>
+          <input
+            type="text"
+            [(ngModel)]="filters.species"
+            (ngModelChange)="onFiltersChange(filters)"
+            placeholder="Ej: Human, Alien..."
+            class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

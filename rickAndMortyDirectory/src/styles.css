@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Clean space theme - Deep space colors */
+  --background: oklch(0.05 0.01 240); /* Deep space black with less saturation */
+  --foreground: oklch(0.88 0.02 180); /* Softer white-blue */
+  --card: oklch(0.08 0.02 240); /* Muted card background */
+  --card-foreground: oklch(0.85 0.03 180);
+  --popover: oklch(0.06 0.01 240);
+  --popover-foreground: oklch(0.88 0.02 180);
+  --primary: oklch(0.6 0.12 180); /* Much less saturated cyan */
+  --primary-foreground: oklch(0.05 0.01 240);
+  --secondary: oklch(0.12 0.02 240); /* Muted secondary */
+  --secondary-foreground: oklch(0.75 0.04 180);
+  --muted: oklch(0.1 0.02 240);
+  --muted-foreground: oklch(0.55 0.04 180);
+  --accent: oklch(0.65 0.08 300); /* Much less saturated purple */
+  --accent-foreground: oklch(0.05 0.01 240);
+  --destructive: oklch(0.55 0.12 15); /* Muted red */
+  --destructive-foreground: oklch(0.88 0.02 180);
+  --border: oklch(0.15 0.03 240);
+  --input: oklch(0.1 0.02 240);
+  --ring: oklch(0.6 0.12 180);
+  --chart-1: oklch(0.6 0.12 180);
+  --chart-2: oklch(0.65 0.08 300);
+  --chart-3: oklch(0.55 0.12 15);
+  --chart-4: oklch(0.7 0.08 60);
+  --chart-5: oklch(0.55 0.15 120);
+  --radius: 1rem;
+  --sidebar: oklch(0.08 0.02 240);
+  --sidebar-foreground: oklch(0.85 0.03 180);
+  --sidebar-primary: oklch(0.6 0.12 180);
+  --sidebar-primary-foreground: oklch(0.05 0.01 240);
+  --sidebar-accent: oklch(0.12 0.02 240);
+  --sidebar-accent-foreground: oklch(0.75 0.04 180);
+  --sidebar-border: oklch(0.15 0.03 240);
+  --sidebar-ring: oklch(0.6 0.12 180);
+}
+
+.dark {
+  /* Same as root for consistent space theme */
+  --background: oklch(0.05 0.01 240);
+  --foreground: oklch(0.88 0.02 180);
+  --card: oklch(0.08 0.02 240);
+  --card-foreground: oklch(0.85 0.03 180);
+  --popover: oklch(0.06 0.01 240);
+  --popover-foreground: oklch(0.88 0.02 180);
+  --primary: oklch(0.6 0.12 180);
+  --primary-foreground: oklch(0.05 0.01 240);
+  --secondary: oklch(0.12 0.02 240);
+  --secondary-foreground: oklch(0.75 0.04 180);
+  --muted: oklch(0.1 0.02 240);
+  --muted-foreground: oklch(0.55 0.04 180);
+  --accent: oklch(0.65 0.08 300);
+  --accent-foreground: oklch(0.05 0.01 240);
+  --destructive: oklch(0.55 0.12 15);
+  --destructive-foreground: oklch(0.88 0.02 180);
+  --border: oklch(0.15 0.03 240);
+  --input: oklch(0.1 0.02 240);
+  --ring: oklch(0.6 0.12 180);
+  --chart-1: oklch(0.6 0.12 180);
+  --chart-2: oklch(0.65 0.08 300);
+  --chart-3: oklch(0.55 0.12 15);
+  --chart-4: oklch(0.7 0.08 60);
+  --chart-5: oklch(0.55 0.15 120);
+  --sidebar: oklch(0.08 0.02 240);
+  --sidebar-foreground: oklch(0.85 0.03 180);
+  --sidebar-primary: oklch(0.6 0.12 180);
+  --sidebar-primary-foreground: oklch(0.05 0.01 240);
+  --sidebar-accent: oklch(0.12 0.02 240);
+  --sidebar-accent-foreground: oklch(0.75 0.04 180);
+  --sidebar-border: oklch(0.15 0.03 240);
+  --sidebar-ring: oklch(0.6 0.12 180);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Added space background with stars */
+    background-image: radial-gradient(1px 1px at 20px 30px, oklch(0.75 0.02 180 / 0.4), transparent),
+      radial-gradient(1px 1px at 40px 70px, oklch(0.65 0.04 300 / 0.3), transparent),
+      radial-gradient(0.5px 0.5px at 90px 40px, oklch(0.7 0.03 180 / 0.3), transparent),
+      radial-gradient(0.5px 0.5px at 130px 80px, oklch(0.6 0.08 180 / 0.2), transparent),
+      radial-gradient(1px 1px at 160px 30px, oklch(0.75 0.02 180 / 0.4), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+  }
+}
+
+/* Updated space-themed animations */
+@keyframes stellar-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px oklch(0.6 0.12 180 / 0.15), 0 0 16px oklch(0.6 0.12 180 / 0.05),
+      inset 0 0 8px oklch(0.6 0.12 180 / 0.02);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 12px oklch(0.6 0.12 180 / 0.2), 0 0 24px oklch(0.6 0.12 180 / 0.08),
+      inset 0 0 12px oklch(0.6 0.12 180 / 0.03);
+    transform: scale(1.005);
+  }
+}
+
+@keyframes nebula-drift {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-1px) rotate(0.2deg);
+  }
+  66% {
+    transform: translateY(0.5px) rotate(-0.1deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes cosmic-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 6px oklch(0.65 0.08 300 / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px oklch(0.65 0.08 300 / 0.15);
+  }
+}
+
+.stellar-pulse {
+  animation: stellar-pulse 4s ease-in-out infinite;
+}
+
+.nebula-drift {
+  animation: nebula-drift 6s ease-in-out infinite;
+}
+
+.cosmic-glow {
+  animation: cosmic-glow 3s ease-in-out infinite;
+}
+
+.space-card {
+  background: oklch(0.12 0.03 240 / 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.25 0.05 240);
+  box-shadow: 0 4px 20px oklch(0.05 0.01 240 / 0.8), 0 0 0 1px oklch(0.6 0.12 180 / 0.1),
+    inset 0 1px 0 oklch(0.8 0.02 180 / 0.05);
+}
+
+.space-card:hover {
+  border-color: oklch(0.35 0.08 240);
+  box-shadow: 0 8px 32px oklch(0.05 0.01 240 / 0.9), 0 0 0 1px oklch(0.6 0.12 180 / 0.2),
+    0 0 20px oklch(0.6 0.12 180 / 0.08), inset 0 1px 0 oklch(0.8 0.02 180 / 0.1);
+}
+
+.space-header {
+  background: oklch(0.08 0.02 240 / 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(0.25 0.05 240);
+  box-shadow: 0 1px 0 oklch(0.6 0.12 180 / 0.05);
+}
+
+/* Enhanced space-themed styles with better contrast */
+/* Added gradient overlays for better visual hierarchy */
+.card-gradient-overlay {
+  background: linear-gradient(
+    135deg,
+    oklch(0.6 0.12 180 / 0.03) 0%,
+    transparent 50%,
+    oklch(0.65 0.08 300 / 0.02) 100%
+  );
+}
+
+.status-glow-alive {
+  box-shadow: 0 0 8px oklch(0.6 0.12 180 / 0.3);
+}
+
+.status-glow-dead {
+  box-shadow: 0 0 8px oklch(0.55 0.12 15 / 0.3);
+}
