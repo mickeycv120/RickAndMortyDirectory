@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
+  safelist: [
+    'bg-background',
+    'text-foreground',
+    'font-sans',
+    'antialiased',
+    'bg-[oklch(0.05_0.01_240)]',
+  ],
   theme: {
     extend: {
       colors: {
