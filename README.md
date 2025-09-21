@@ -193,11 +193,11 @@ interface ApiResponse<T> {
 
 ## Decisiones Técnicas
 
-• **Standalone Components**: Eliminan la necesidad de NgModules, mejoran tree-shaking y facilitan lazy loading
-• **Tailwind + Angular Material**: Tailwind para utility-first styling, Material para componentes complejos como modales
-• **OnPush Change Detection**: Optimiza renderizado en componentes de lista con muchos elementos
-• **Firebase Hosting**: Despliegue rápido, CDN global y configuración simple para SPAs
-• **Signals over BehaviorSubject**: API más simple y mejor integración con el nuevo Angular
+- **Standalone Components**: Eliminan la necesidad de NgModules, mejoran tree-shaking y facilitan lazy loading
+- **Tailwind + Angular Material**: Tailwind para utility-first styling, Material para componentes complejos como modales
+- **OnPush Change Detection**: Optimiza renderizado en componentes de lista con muchos elementos
+- **Firebase Hosting**: Despliegue rápido, CDN global y configuración simple para SPAs
+- **Signals over BehaviorSubject**: API más simple y mejor integración con el nuevo Angular
 
 ## Escalabilidad y Mantenimiento
 
