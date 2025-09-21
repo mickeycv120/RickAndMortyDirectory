@@ -224,3 +224,6 @@
 .status-glow-dead {
   box-shadow: 0 0 8px oklch(0.55 0.12 15 / 0.3);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
