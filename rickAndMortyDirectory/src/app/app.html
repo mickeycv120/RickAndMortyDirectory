@@ -4,4 +4,8 @@
   (filtersChange)="onFiltersChange($event)"
 />
 <router-outlet />
-<app-card [filters$]="currentFilters$" (dataChange)="onDataChange($event)" />
+<app-card
+  [filters$]="currentFilters$"
+  (dataChange)="onDataChange($event)"
+  (characterClick)="onCharacterClick($event)"
+/>

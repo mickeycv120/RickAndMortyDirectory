@@ -22,6 +22,7 @@ import { BehaviorSubject, Observable, switchMap, map, startWith, catchError, of,
 export class Card implements OnInit {
   @Input() filters$!: Observable<CharacterFilters>;
   @Output() dataChange = new EventEmitter<{ totalCount: number }>();
+  @Output() characterClick = new EventEmitter<Character>();
 
   private pageSubject = new BehaviorSubject<number>(1);
   private filtersSubject = new BehaviorSubject<CharacterFilters>({
@@ -73,6 +74,10 @@ export class Card implements OnInit {
 
   trackByCharacter(index: number, character: Character): number {
     return character.id;
+  }
+
+  onCharacterClick(character: Character) {
+    this.characterClick.emit(character);
   }
 
   nextPage() {

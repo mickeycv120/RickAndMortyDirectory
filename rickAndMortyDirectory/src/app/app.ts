@@ -2,8 +2,10 @@ import { Component, signal } from '@angular/core';
 import { Header } from './components/header/header';
 import { RouterOutlet } from '@angular/router';
 import { Card } from './components/card/card';
-import { CharacterFilters } from './Types/characterType';
+import { CharacterFilters, Character } from './Types/characterType';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsModal } from './modals/details-modal/details-modal';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +31,8 @@ export class App {
   };
   totalCount = 0;
 
+  constructor(private dialog: MatDialog) {}
+
   // Método que se ejecuta cuando el header emite cambios de filtros
   onFiltersChange(filters: CharacterFilters) {
     this.currentFilters = { ...filters };
@@ -38,5 +42,21 @@ export class App {
   // Método para recibir el total count desde Card
   onDataChange(data: { totalCount: number }) {
     this.totalCount = data.totalCount;
+  }
+
+  // Método para manejar el clic en una card de personaje
+  onCharacterClick(character: Character) {
+    console.log('Character clicked:', character);
+    
+    // Abrir el modal de detalles
+    const dialogRef = this.dialog.open(DetailsModal, {
+      width: '600px',
+      maxWidth: '90vw',
+      data: { character }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal cerrado');
+    });
   }
 }

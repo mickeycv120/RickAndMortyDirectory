@@ -1,0 +1,77 @@
+<div class="details-modal-content bg-background rounded-xl shadow-xl p-6 max-w-3xl mx-auto overflow-hidden">
+  <!-- Header del modal -->
+  <div class="modal-header flex flex-col items-center gap-3 mb-6">
+    <img
+      [src]="data.character.image"
+      [alt]="data.character.name"
+      class="w-40 h-40 rounded-full object-cover border-4 border-primary shadow-lg"
+    />
+    <h2 class="text-3xl font-bold text-center text-primary">{{ data.character.name }}</h2>
+    <span
+      class="px-4 py-1 rounded-full text-sm font-medium"
+      [class]="getStatusClass(data.character.status)"
+    >
+      {{ data.character.status }}
+    </span>
+  </div>
+
+  <!-- Body del modal con scroll si es necesario -->
+  <div class="modal-body space-y-6 max-h-[70vh] overflow-y-auto pr-2">
+    <!-- Información básica -->
+    <div class="grid grid-cols-2 gap-6">
+      <div class="info-item">
+        <h3 class="font-semibold text-sm text-muted-foreground mb-1">Género</h3>
+        <p class="text-lg font-medium">{{ data.character.gender }}</p>
+      </div>
+      <div class="info-item">
+        <h3 class="font-semibold text-sm text-muted-foreground mb-1">Especie</h3>
+        <p class="text-lg font-medium">{{ data.character.species }}</p>
+      </div>
+    </div>
+
+    <!-- Ubicaciones -->
+    <div class="locations-section space-y-3">
+      <h3 class="font-semibold text-lg mb-2">Ubicaciones</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="location-item p-4 bg-primary/10 rounded-lg border border-primary/20">
+          <h4 class="font-medium text-sm text-primary mb-1">Origen</h4>
+          <p class="text-base">{{ data.character.origin.name }}</p>
+        </div>
+        <div class="location-item p-4 bg-primary/10 rounded-lg border border-primary/20">
+          <h4 class="font-medium text-sm text-primary mb-1">Ubicación Actual</h4>
+          <p class="text-base">{{ data.character.location.name }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episodios -->
+    <div class="episodes-section">
+      <h3 class="font-semibold text-lg mb-3">Episodios</h3>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="episodes-count flex flex-col items-center justify-center p-4 bg-primary/10 rounded-lg border border-primary/20">
+          <div class="text-2xl font-bold text-primary">{{ data.character.episode.length }}</div>
+          <div class="text-sm text-muted-foreground">Episodios totales</div>
+        </div>
+        <div class="episodes-list col-span-4 max-h-48 overflow-y-auto">
+          <div class="grid grid-cols-4 gap-2">
+            @for (episodeUrl of data.character.episode; track episodeUrl) {
+              <span class="episode-number px-2 py-1 bg-secondary/20 rounded text-xs text-center">
+                {{ getEpisodeNumber(episodeUrl) }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="modal-footer mt-6 flex justify-end">
+    <button
+      (click)="onClose()"
+      class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>
