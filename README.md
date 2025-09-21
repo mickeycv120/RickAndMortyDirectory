@@ -281,7 +281,6 @@ interface ApiResponse<T> {
 - **Reduced Motion**: Respeto por `prefers-reduced-motion`
 - **Keyboard Navigation**: Navegable completamente con teclado
 - **Modularización de Componentes**: Los componentes actuales pueden dividirse en sub-componentes más específicos para mejor mantenibilidad (ej: separar filtros del header, crear componente específico para status badges)
--
 
 ## Uso de IA
 
