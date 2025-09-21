@@ -8,9 +8,30 @@ Una aplicación web moderna para explorar el universo de Rick and Morty, constru
 
 **Aplicación de Directorio de Personajes Rick and Morty**
 
-- **API utilizada**: [Rick and Morty API](https://rickandmortyapi.com/)
-- **Funcionalidades implementadas**: Listado de personajes, búsqueda/filtrado, vista de detalles, sistema de favoritos
-- **Supuestos**: Los datos se obtienen exclusivamente de la API pública, los favoritos se almacenan localmente
+## 🚀 Funcionalidades
+
+La aplicación actualmente permite:
+
+- 🔍 **Visualizar un listado general** de personajes obtenidos desde la API.
+- 👤 **Consultar detalles individuales** de cada personaje, incluyendo:
+  - Nombre
+  - Estado (vivo, muerto o desconocido)
+  - Especie
+  - Género
+  - Origen
+  - Ubicación actual
+  - Lista de episodios en los que aparece
+- 🔎 **Buscar personajes por nombre**.
+- 🎯 **Filtrar personajes** por:
+  - Estado (vivo, muerto, desconocido)
+  - Especie
+- ⭐ **Marcar personajes como favoritos**, con persistencia mediante `localStorage` del navegador.
+
+## 📦 Alcance de la Versión Actual
+
+- Esta versión consume datos exclusivamente desde la **API pública de Rick and Morty**.
+- No utiliza servidores propios ni bases de datos externas.
+- Toda la lógica de almacenamiento se maneja en el cliente (front-end) mediante `localStorage`.
 
 ## Instalación y Ejecución
 
@@ -166,7 +187,7 @@ interface ApiResponse<T> {
 
 ### Estrategia de Carga
 
-- **Paginación**: Lazy loading con scroll infinito
+- **Paginación**: Navegación por páginas numeradas
 - **Filtrado en tiempo real**: Debounce para optimizar llamadas
 - **Caché inteligente**: Evita llamadas redundantes
 
