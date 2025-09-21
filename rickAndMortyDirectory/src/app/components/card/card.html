@@ -1,67 +1,75 @@
-@if (data$ | async; as data) {
-<!-- Loading skeleton - más compacto -->
-@if (data.isLoading && data.characters.length === 0) {
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-  @for (item of [1, 2, 3]; track item) {
-  <div class="p-4 rounded-xl border bg-background text-center">
-    <div class="w-full h-32 bg-gray-200 rounded-lg mb-3 animate-pulse"></div>
-    <div class="h-3 bg-gray-200 rounded mb-2 animate-pulse"></div>
-    <div class="h-2 bg-gray-100 rounded w-2/3 mx-auto animate-pulse"></div>
-  </div>
-  }
-</div>
-}
-
-<!-- Lista de personajes - siempre visible si hay datos -->
-@if (data.characters.length > 0) {
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-  @for (character of data.characters; track trackByCharacter($index, character)) {
-  <div
-    class="p-4 rounded-xl border bg-background text-center cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
-    (click)="onCharacterClick(character)"
-  >
-    <div class="relative">
-      <img
-        [src]="character.image"
-        [alt]="character.name"
-        class="rounded-lg mb-4 mx-auto transition-opacity duration-300"
-        loading="lazy"
-        style="width: 100%; height: 200px; object-fit: cover"
-      />
+<div class="mx-5">
+  @if (data$ | async; as data) {
+  <!-- Loading skeleton - más compacto -->
+  @if (data.isLoading && data.characters.length === 0) {
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+    @for (item of [1, 2, 3]; track item) {
+    <div class="p-6 rounded-xl border bg-background text-center">
+      <div class="w-full h-72 bg-gray-200 rounded-lg mb-6 animate-pulse"></div>
+      <div class="h-4 bg-gray-200 rounded mb-3 animate-pulse"></div>
+      <div class="h-3 bg-gray-100 rounded w-2/3 mx-auto animate-pulse"></div>
     </div>
-    <h3 class="text-lg font-semibold">{{ character.name }}</h3>
-    <p class="text-sm text-muted-foreground">{{ character.status }} - {{ character.species }}</p>
+    }
   </div>
   }
-</div>
-}<!-- Loading indicator sutil cuando se están cargando más datos -->
-@if (data.isLoading && data.characters.length > 0) {
-<div class="text-center py-4">
-  <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
-  <span class="ml-2 text-muted-foreground">Cargando...</span>
-</div>
-}
 
-<!-- Mensaje cuando no hay resultados -->
-@if (!data.isLoading && data.characters.length === 0) {
-<div class="text-center py-8">
-  <p class="text-muted-foreground">No se encontraron personajes</p>
+  <!-- Lista de personajes - siempre visible si hay datos -->
+  @if (data.characters.length > 0) {
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+    @for (character of data.characters; track trackByCharacter($index, character)) {
+    <div
+      class="p-6 rounded-xl border bg-background border-blue-950 text-center cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
+      (click)="onCharacterClick(character)"
+    >
+      <div class="relative">
+        <img
+          [src]="character.image"
+          [alt]="character.name"
+          class="w-full h-[280px] object-cover rounded-lg mb-6 mx-auto transition-opacity duration-300"
+          loading="lazy"
+        />
+      </div>
+      <h3 class="text-xl font-semibold mb-2">{{ character.name }}</h3>
+      <p class="text-base text-muted-foreground">
+        {{ character.status }} - {{ character.species }}
+      </p>
+    </div>
+    }
+  </div>
+  }<!-- Loading indicator sutil cuando se están cargando más datos -->
+  @if (data.isLoading && data.characters.length > 0) {
+  <div class="text-center py-4">
+    <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+    <span class="ml-2 text-muted-foreground">Cargando...</span>
+  </div>
+  }
+
+  <!-- Mensaje cuando no hay resultados -->
+  @if (!data.isLoading && data.characters.length === 0) {
+  <div class="text-center py-8">
+    <p class="text-muted-foreground">No se encontraron personajes</p>
+  </div>
+  }
+
+  <!-- Paginación -->
+  @if (!data.isLoading && data.characters.length > 0) {
+  <div class="flex justify-between items-center mt-12 mb-4 px-4">
+    <button
+      (click)="prevPage()"
+      [disabled]="(currentPage$ | async) === 1"
+      class="px-6 py-3 bg-green-600 text-white rounded-lg disabled:opacity-50 hover:bg-green-700 transition-colors flex items-center justify-center"
+    >
+      Anterior
+    </button>
+
+    <span class="text-lg font-medium">Página {{ currentPage$ | async }}</span>
+
+    <button
+      (click)="nextPage()"
+      class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center"
+    >
+      Siguiente
+    </button>
+  </div>
+  } }
 </div>
-}
-
-<!-- Paginación -->
-@if (!data.isLoading && data.characters.length > 0) {
-<div class="flex justify-between mt-6">
-  <button
-    (click)="prevPage()"
-    [disabled]="(currentPage$ | async) === 1"
-    class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-  >
-    Anterior
-  </button>
-
-  <span>Página {{ currentPage$ | async }}</span>
-
-  <button (click)="nextPage()" class="px-4 py-2 bg-gray-200 rounded">Siguiente</button>
-</div>
-} }

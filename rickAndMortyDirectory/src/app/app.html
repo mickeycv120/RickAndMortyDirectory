@@ -1,11 +1,13 @@
-<app-header
-  [filters]="currentFilters"
-  [totalCount]="totalCount"
-  (filtersChange)="onFiltersChange($event)"
-/>
-<router-outlet />
-<app-card
-  [filters$]="currentFilters$"
-  (dataChange)="onDataChange($event)"
-  (characterClick)="onCharacterClick($event)"
-/>
+<div class="mx-4 mt-4 pb-2">
+  <app-header
+    [filters]="currentFilters"
+    [totalCount]="totalCount"
+    (filtersChange)="onFiltersChange($event)"
+  />
+  <router-outlet />
+  <app-card
+    [filters$]="currentFilters$"
+    (dataChange)="onDataChange($event)"
+    (characterClick)="onCharacterClick($event)"
+  />
+</div>

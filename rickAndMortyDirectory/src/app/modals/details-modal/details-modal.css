@@ -11,3 +11,24 @@
   overflow: hidden !important;
   background: transparent !important;
 }
+
+/* Estilos para responsividad y scroll interno */
+.details-modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Mejoras para móviles */
+@media (max-width: 768px) {
+  .details-modal-content {
+    max-height: 95vh;
+    padding: 1rem !important;
+  }
+}
