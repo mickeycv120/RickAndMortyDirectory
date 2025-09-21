@@ -1,0 +1,25 @@
+/* Optimización para la carga de imágenes */
+img {
+  background-color: #f3f4f6;
+  min-height: 200px;
+}
+
+/* Animación más suave para el skeleton */
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Transiciones suaves */
+.grid > div {
+  transition: all 0.2s ease-in-out;
+}
