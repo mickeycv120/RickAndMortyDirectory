@@ -1,5 +1,19 @@
 {
+  "hosting": {
+    "public": "dist/rickAndMortyDirectory/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
   "projects": {
-    "default": "rickAndMortyDirectory"
+    "default": "rickandmortydirectory"
   }
 }
