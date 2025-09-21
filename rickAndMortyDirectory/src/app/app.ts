@@ -53,7 +53,7 @@ export class App {
     // Abrir el modal de detalles
     const dialogRef = this.dialog.open(DetailsModal, {
       width: '90vw', // hasta 90% del ancho de la pantalla
-      maxWidth: '800px', // no crece más de 800px en pantallas grandes
+      maxWidth: '700px', // no crece más de 800px en pantallas grandes
       height: 'auto', // altura automática según contenido
       maxHeight: '90vh', // no se salga del 90% de la altura de la pantalla
       panelClass: 'custom-dialog-container',
